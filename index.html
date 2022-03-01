@@ -8,11 +8,24 @@
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
     <link rel="shortcut icon" href="bomb.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/ff8a5b79c4.js" crossorigin="anonymous"></script>
     <title>MineSweeper</title>
 </head>
 
 <body>
-
+    <div class="head-box">
+        <div class="help">
+            <i class="far fa-question-circle"></i>
+        </div>
+        <div class="mode">
+            <label for="toggle">
+                <input type="checkbox" id="toggle" class="toggle">
+                <i class="far fa-sun"></i>
+                <i class="far fa-moon"></i>
+                <div class="toggle-circle"></div>
+            </label>
+        </div>
+    </div>
     <div class="container">
         <h1>MineSweeper</h1>
         <div class="custom-select">
@@ -32,6 +45,7 @@
                 <h2>🎉 You won! 🥳</h2>
             </div>
         </div>
+
     </div>
 
 </body>

@@ -12,7 +12,32 @@ const startBtn = document.querySelector("#start-btn"),
 let bombAmount = parseInt(difficulty.selectedOptions[0].value)
 let result = document.querySelector(".result");
 
+const toggleCircle = document.querySelector(".toggle-circle"),
+    toggle = document.querySelector(".toggle"),
+    body = document.querySelector("body"),
+    select = document.querySelector("select"),
+    playBox = document.querySelector(".playBox"),
+    mode = document.querySelector(".mode");
+
+
+
 // Events
+toggle.addEventListener("click", e => {
+    if (toggle.checked) {
+        toggleCircle.style.left = "47px";
+        toggleCircle.classList.add("dark")
+        mode.classList.add("dark")
+        body.classList.add("dark")
+        select.classList.add("dark")
+
+    } else {
+        toggleCircle.style.left = "0px";
+        body.classList.remove("dark")
+        mode.classList.remove("dark")
+        toggleCircle.classList.remove("dark")
+    }
+})
+
 difficulty.addEventListener("change", () => {
     bombAmount = parseInt(difficulty.selectedOptions[0].value);
 })
