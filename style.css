@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#restart {
+    display: none;
+}
+.grid {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: grey; */
+}
+
+.grid div {
+    background-color: lightgray;
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+    text-align: center;
+    user-select: none;
+    padding: 7px;
+}
+
+.grid div.bomb {
+    background-color: red;
+}
+.grid div.checked {
+    background-color: orange;
+}
