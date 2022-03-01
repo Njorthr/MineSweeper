@@ -1,18 +1,33 @@
 const grid = document.querySelector(".grid");
 let width = 10;
 let squares = []
-let bombAmount = 20
 let flags = 0
 let isGameOver = false;
 let matches = 0;
 const startBtn = document.querySelector("#start-btn"),
-    restartBtn = document.querySelector("#restart");
+    restartBtn = document.querySelector("#restart"),
+    closeBtn = document.querySelector(".closeBtn"),
+    modal = document.querySelector(".modal"),
+    difficulty = document.querySelector("#difficulty");
+let bombAmount = parseInt(difficulty.selectedOptions[0].value)
 let result = document.querySelector(".result");
 
-
+// Events
+difficulty.addEventListener("change", () => {
+    bombAmount = parseInt(difficulty.selectedOptions[0].value);
+})
+window.addEventListener("click", e => {
+    if (e.target == modal) {
+        modal.style.display = "none";
+    }
+});
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+})
 
 startBtn.addEventListener("click", () => {
     startBtn.style.display = "none";
+    difficulty.style.display = "none";
     createBoard()
 })
 
@@ -25,6 +40,7 @@ restartBtn.addEventListener("click", () => {
     restartBtn.style.display = "none";
     grid.innerHTML = null;
     result.innerHTML = "";
+    difficulty.style.display = "none";
     checkForWin()
     createBoard()
 })
@@ -54,7 +70,8 @@ function createBoard() {
         grid.appendChild(square)
         squares.push(square)
         const innerSquare = document.createElement("div")
-        innerSquare.setAttribute("class", innerSquare)
+        innerSquare.setAttribute("class", "innerSquare")
+        square.appendChild(innerSquare)
 
         // normal click
         square.addEventListener("click", function (e) {
@@ -134,7 +151,7 @@ function addFlag(square) {
             checkForWin()
         } else if (square.classList.contains("flag")) {
             square.classList.remove("flag")
-            square.innerHTML = ""
+            square.innerHTML = "<div class='innerSquare'></div>"
             flags--
         }
 
@@ -235,9 +252,10 @@ function gameOver(square) {
     // Show all the bombs
     squares.forEach(square => {
         if (square.classList.contains("bomb")) {
-            square.innerHTML = "💣"
+            square.innerHTML = "<div class='innerSquare'></div> 💣"
         }
     })
+    difficulty.style.display = "block";
 
 }
 
@@ -256,10 +274,10 @@ function checkForWin() {
     }
     if (isGameOver) {
         if (matches === bombAmount) {
-            result.innerHTML += `Congrats! You Win! <br>`
+            modal.style.display = "block";
         }
         restartBtn.style.display = "block";
-        result.innerHTML += `Your score is : ${matches}`
+        result.innerHTML = `Your score is : ${matches}`
         console.log(matches);
     }
 }

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
+    <link rel="shortcut icon" href="bomb.png" type="image/x-icon">
     <title>MineSweeper</title>
 </head>
 
@@ -14,10 +15,23 @@
 
     <div class="container">
         <h1>MineSweeper</h1>
-        <button id="start-btn">Start</button>
+        <div class="custom-select">
+            <select id="difficulty">
+                <option value="10">Easy</option>
+                <option value="20" selected>Medium</option>
+                <option value="25">Hard</option>
+            </select>
+        </div>
+        <button id="start-btn" class="btn">Start</button>
         <div class="grid"></div>
         <div class="result"></div>
-        <button id="restart">Restart</button>
+        <button id="restart" class="btn">Restart</button>
+        <div class="modal">
+            <div class="modal-content">
+                <span class="closeBtn">❌</span>
+                <h2>🎉 You won! 🥳</h2>
+            </div>
+        </div>
     </div>
 
 </body>
