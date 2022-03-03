@@ -11,6 +11,16 @@ body {
     align-items: center;
     flex-direction: column;
 }
+.signature {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+.signature a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: dodgerblue;
+}
 /* Modal */
 .modal {
     display: none;
@@ -23,8 +33,17 @@ body {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.2);
 }
+#modal-help .modal-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    margin: 15% auto;
+}
+
 .modal-content {
     background-color: #f4f4f4;
+    color: black;
     margin: 20% auto;
     text-align: center;
     padding: 1rem;
@@ -103,7 +122,9 @@ body {
     height: 25px;
     background: lightgray;
 }
-
+/* .grid div.bomb {
+    border: 2px solid black;
+} */
 
 .grid div.checked, .flag {
     background: rgb(226, 226, 226) !important;
@@ -224,4 +245,17 @@ select:focus {
 }
 body.dark {
     background-color:  #121212;
+}
+
+@media (max-width:1870px) {
+    .inner-help img{
+        width: 300px;
+        height: auto;
+        
+    }
+}
+@media (max-width:1400px) {
+    #modal-help .modal-content div{
+        width: 50%;
+    }
 }

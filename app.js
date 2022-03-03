@@ -6,8 +6,10 @@ let isGameOver = false;
 let matches = 0;
 const startBtn = document.querySelector("#start-btn"),
     restartBtn = document.querySelector("#restart"),
-    closeBtn = document.querySelector(".closeBtn"),
-    modal = document.querySelector(".modal"),
+    closeBtn = document.querySelectorAll(".closeBtn"),
+    helpBtn = document.querySelector(".help"),
+    modal = document.querySelector("#modal-win"),
+    modalHelp = document.querySelector("#modal-help"),
     difficulty = document.querySelector("#difficulty");
 let bombAmount = parseInt(difficulty.selectedOptions[0].value)
 let result = document.querySelector(".result");
@@ -22,6 +24,7 @@ const toggleCircle = document.querySelector(".toggle-circle"),
 
 
 // Events
+helpBtn.addEventListener("click", () => modalHelp.style.display = "block")
 toggle.addEventListener("click", e => {
     if (toggle.checked) {
         toggleCircle.style.left = "47px";
@@ -42,13 +45,17 @@ difficulty.addEventListener("change", () => {
     bombAmount = parseInt(difficulty.selectedOptions[0].value);
 })
 window.addEventListener("click", e => {
-    if (e.target == modal) {
+    if (e.target == modal || e.target == modalHelp) {
         modal.style.display = "none";
+        modalHelp.style.display = "none";
     }
+
 });
-closeBtn.addEventListener("click", () => {
+closeBtn.forEach(e => e.addEventListener("click", () => {
+    modalHelp.style.display = "none";
     modal.style.display = "none";
-})
+
+}))
 
 startBtn.addEventListener("click", () => {
     startBtn.style.display = "none";
