@@ -12,7 +12,9 @@ const startBtn = document.querySelector("#start-btn"),
     modalHelp = document.querySelector("#modal-help"),
     difficulty = document.querySelector("#difficulty");
 let bombAmount = parseInt(difficulty.selectedOptions[0].value)
-let result = document.querySelector(".result");
+let result = document.querySelector(".result"),
+    flagsLeft = document.querySelector(".flags-left");
+
 
 const toggleCircle = document.querySelector(".toggle-circle"),
     toggle = document.querySelector(".toggle"),
@@ -72,6 +74,7 @@ restartBtn.addEventListener("click", () => {
     restartBtn.style.display = "none";
     grid.innerHTML = null;
     result.innerHTML = "";
+    flagsLeft.innerHTML = "";
     difficulty.style.display = "none";
     checkForWin()
     createBoard()
@@ -171,6 +174,7 @@ function createBoard() {
 
 // add flag with right click
 function addFlag(square) {
+
     if (isGameOver) {
         return
     }
@@ -189,6 +193,7 @@ function addFlag(square) {
 
 
     }
+    flagsLeft.innerHTML = `Flags left: ${bombAmount - flags}`;
 }
 
 
@@ -294,11 +299,10 @@ function gameOver(square) {
 // check for win
 function checkForWin() {
     matches = 0;
-
     for (let i = 0; i < squares.length; i++) {
         if (squares[i].classList.contains("flag") && squares[i].classList.contains("bomb")) {
             matches++
-            console.log(matches);
+            // console.log(matches);
         }
         if (matches === bombAmount) {
             isGameOver = true;
@@ -306,11 +310,13 @@ function checkForWin() {
     }
     if (isGameOver) {
         if (matches === bombAmount) {
+            flagsLeft.innerHTML = "";
             modal.style.display = "block";
         }
+        flagsLeft.innerHTML = "";
         restartBtn.style.display = "block";
         result.innerHTML = `Your score is : ${matches}`
-        console.log(matches);
+        // console.log(matches);
     }
 }
 

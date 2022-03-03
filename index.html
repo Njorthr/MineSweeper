@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
-    <link rel="shortcut icon" href="bomb.png" type="image/x-icon">
+    <link rel="shortcut icon" href="media/bomb.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/ff8a5b79c4.js" crossorigin="anonymous"></script>
     <title>MineSweeper</title>
 </head>
@@ -38,6 +38,7 @@
         <button id="start-btn" class="btn">Start</button>
         <div class="grid"></div>
         <div class="result"></div>
+        <div class="flags-left"></div>
         <button id="restart" class="btn">Restart</button>
         <div class="modal" id="modal-win">
             <div class="modal-content">
@@ -49,19 +50,19 @@
             <div class="modal-content">
                 <span class="closeBtn">❌</span>
                 <div class="inner-help">
-                    <img src="normal-click.gif" alt="">
+                    <img src="media/normal-click.gif" alt="">
                     <p>You can step on a square with <strong>Left Click</strong></p>
                 </div>
                 <div class="inner-help">
-                    <img src="right-click-400.gif" alt="">
+                    <img src="media/right-click-400.gif" alt="">
                     <p>Add flag to squares with <strong>Right Click</strong></p>
                 </div>
                 <div class="inner-help">
-                    <img src="game-over-400.gif" alt="">
+                    <img src="media/game-over-400.gif" alt="">
                     <p><strong>Step carefully!</strong> if you step on a bomb you lose</p>
                 </div>
                 <div class="inner-help">
-                    <img src="win-400.gif" alt="">
+                    <img src="media/win-400.gif" alt="">
                     <p>In order to win you must <strong>flag</strong> all bombs</p>
                 </div>
             </div>
